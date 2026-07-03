@@ -1,3 +1,5 @@
+from ui.dashboard import Dashboard
+
 from PySide6.QtWidgets import (
     QWidget,
     QLabel,
@@ -17,7 +19,7 @@ class Login(QWidget):
         super().__init__()
 
         self.setWindowTitle("InfoSousa Frota")
-        self.setFixedSize(450, 650)
+        self.setFixedSize(450, 550)
 
         self.montar_tela()
 
@@ -104,7 +106,8 @@ class Login(QWidget):
         # ==========================
 
         botao = QPushButton("Entrar")
-        botao.setMinimumHeight(45)
+        botao.setMinimumHeight(40)
+       
 
         botao.clicked.connect(self.entrar)
 
@@ -115,10 +118,12 @@ class Login(QWidget):
                 border-radius:8px;
                 font-size:16px;
                 font-weight:bold;
+                
             }
 
             QPushButton:hover{
                 background:#1976D2;
+                
             }
         """)
 
@@ -157,11 +162,10 @@ class Login(QWidget):
 
         if usuario == "admin" and senha == "123":
 
-            QMessageBox.information(
-                self,
-                "InfoSousa",
-                "Login realizado com sucesso!"
-            )
+            self.dashboard = Dashboard()
+            self.dashboard.show()
+
+            self.close()
 
         else:
 
